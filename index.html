@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votação de Filmes</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .filme {
+            display: inline-block;
+            margin: 10px;
+            border: 1px solid #fdfdfd;
+            border-radius: 8px;
+            padding: 10px;
+        }
+        .resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        img {
+            width: 250px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        /* Estilo do botão */ button { padding: 15px 30px; /* Aumenta o tamanho do botão */ font-size: 18px; /* Aumenta o tamanho da fonte */ background-color: #ff0000; /* Cor de fundo */ color: white; /* Cor do texto */ border: none; /* Remove borda */ border-radius: 5px; /* Arredonda os cantos */ cursor: pointer; /* Muda o cursor para pointer */ transition: background-color 0.3s; /* Transição suave na cor */
+        }
+    </style>
+</head>
+<body>
+
+<div class="logo">
+    <h1>Votação de Filmes</h1>
+    <img src="cine aula.png" alt="Logo" />
+</div>
+
+<h2>Vote no seu filme favorito!</h2>
+<form id="votacao">
+    <div class="filme">
+        <img src="ridiculous 6.jpg.jpg" alt="Os Ridiculous 6">
+        <br>
+        <label>
+            <input type="radio" name="opcao" value="Os Ridiculous 6"> Os Ridiculous 6
+        </label>
+    </div>
+    <div class="filme">
+        <img src="gente grande 2.jpg" alt="Gente grande">
+        <br>
+        <label>
+            <input type="radio" name="opcao" value="Gente grande"> Gente Grande
+        </label>
+    </div>
+    <div class="filme">
+        <img src="A Casa Monstro.webp" alt="A Casa Monstro">
+        <br>
+        <label>
+            <input type="radio" name="opcao" value="A Casa Monstro"> A Casa Monstro
+        </label>
+    </div>
+    <div class="filme">
+        <img src="Noites Brutais.jpg" alt="Noites Brutais">
+        <br>
+        <label>
+            <input type="radio" name="opcao" value="Noites Brutais"> Noites Brutais
+        </label>
+    </div>
+    <div class="filme">
+        <img src="velozes e furiosos 5.jpg" alt="Velozes e furiosos 5">
+        <br>
+        <label>
+            <input type="radio" name="opcao" value="Velozes e furiosos 5"> Velozes e furiosos 5
+        </label>
+    </div>
+    <div class="filme">
+        <img src="Os novatos.jpg" alt="Os novatos">
+        <br>
+        <label>
+            <input type="radio" name="opcao" value="Os novatos"> Os novatos
+        </label>
+    </div>
+    <br>
+    <button type="button" onclick="contarVotos()">Votar</button>
+</form>
+
+<div class="resultado" id="resultado"></div>
+
+<script>
+    let votos = {
+        "Os Ridiculous 6": 0,
+        "Gente grande": 0,
+        "A Casa Monstro": 0,
+        "Noites Brutais": 0,
+        "Velozes e furiosos 5": 0,
+        "Os novatos": 0
+    };
+
+    let jaVotou = false;
+
+    function contarVotos() {
+        if (jaVotou) {
+            alert("Você já votou!");
+            return;
+        }
+
+        const formulario = document.getElementById('votacao');
+        const opcaoSelecionada = formulario.opcao.value;
+
+        if (opcaoSelecionada) {
+            votos[opcaoSelecionada]++;
+            jaVotou = true; // Marca que o usuário já votou
+            mostrarResultado();
+            formulario.reset();
+        } else {
+            alert("Por favor, selecione um filme!");
+        }
+    }
+
+    function mostrarResultado() {
+        const resultadoDiv = document.getElementById('resultado');
+        const filmeMaisVotado = Object.keys(votos).reduce((a, b) => votos[a] > votos[b] ? a : b);
+        resultadoDiv.innerHTML = `
+            Resultados:<br>
+            Os Ridiculous 6: ${votos["Os Ridiculous 6"]} voto(s)<br>
+            Gente grande: ${votos["Gente grande"]} voto(s)<br>
+            A Casa Monstro: ${votos["A Casa Monstro"]} voto(s)<br>
+            Noites Brutais: ${votos["Noites Brutais"]} voto(s)<br>
+            Velozes e furiosos 5: ${votos["Velozes e furiosos 5"]} voto(s)<br>
+            Os novatos: ${votos["Os novatos"]} voto(s)<br><br>
+            <strong>Filme mais votado: ${filmeMaisVotado}</strong>
+        `;
+    }
+</script>
+
+</body>

@@ -1,0 +1,48 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #141414;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background: #e50914;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.banner {
+    height: 400px;
+    background: url('banner.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.content {
+    padding: 20px;
+}
+
+.movie {
+    display: inline-block;
+    width: 150px;
+    margin: 10px;
+}
+
+img {
+    width: 100%;
+    border-radius: 5px;
+}
