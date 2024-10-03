@@ -30,7 +30,15 @@
         .logo {
             margin-bottom: 20px;
         }
-        /* Estilo do botão */ button { padding: 15px 30px; /* Aumenta o tamanho do botão */ font-size: 18px; /* Aumenta o tamanho da fonte */ background-color: #ff0000; /* Cor de fundo */ color: white; /* Cor do texto */ border: none; /* Remove borda */ border-radius: 5px; /* Arredonda os cantos */ cursor: pointer; /* Muda o cursor para pointer */ transition: background-color 0.3s; /* Transição suave na cor */
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
     </style>
 </head>
@@ -101,20 +109,24 @@
         "Os novatos": 0
     };
 
-    let jaVotou = false;
+    // No início do seu script
+    document.addEventListener('DOMContentLoaded', function () {
+        if (localStorage.getItem('votos')) {
+            votos = JSON.parse(localStorage.getItem('votos'));
+        }
+        mostrarResultado(); // Mostra resultados na carga inicial
+    });
 
     function contarVotos() {
-        if (jaVotou) {
-            alert("Você já votou!");
-            return;
-        }
-
         const formulario = document.getElementById('votacao');
         const opcaoSelecionada = formulario.opcao.value;
 
         if (opcaoSelecionada) {
             votos[opcaoSelecionada]++;
-            jaVotou = true; // Marca que o usuário já votou
+            
+            // Salva no localStorage
+            localStorage.setItem('votos', JSON.stringify(votos));
+
             mostrarResultado();
             formulario.reset();
         } else {
@@ -139,3 +151,4 @@
 </script>
 
 </body>
+</html>
