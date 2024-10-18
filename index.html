@@ -26,6 +26,7 @@
             width: 250px;
             height: auto;
             border-radius: 5px;
+            cursor: pointer;
         }
         .logo {
             margin-bottom: 20px;
@@ -52,45 +53,57 @@
 <h2>Vote no seu filme favorito!</h2>
 <form id="votacao">
     <div class="filme">
-        <img src="ridiculous 6.jpg.jpg" alt="Os Ridiculous 6">
+        <a href="https://youtu.be/n5tiGi6NG8M?si=GbLcZlemAVX5g-lI" target="_blank">
+            <img src="ridiculous 6.jpg.jpg" alt="Os Ridiculous 6">
+        </a>
         <br>
         <label>
             <input type="radio" name="opcao" value="Os Ridiculous 6"> Os Ridiculous 6
         </label>
     </div>
     <div class="filme">
-        <img src="gente grande 2.jpg" alt="Gente grande">
+        <a href="https://youtu.be/58pICzXa9bw?si=qQEEvlJvx66XFwwV" target="_blank">
+            <img src="gente grande 2.jpg" alt="Gente Grande">
+        </a>
         <br>
         <label>
             <input type="radio" name="opcao" value="Gente grande"> Gente Grande
         </label>
     </div>
     <div class="filme">
-        <img src="A Casa Monstro.webp" alt="A Casa Monstro">
+        <a href="https://youtu.be/q3h98qqikyA?si=WMsxYMEQSIkFeYtX" target="_blank">
+            <img src="A Casa Monstro.webp" alt="A Casa Monstro">
+        </a>
         <br>
         <label>
             <input type="radio" name="opcao" value="A Casa Monstro"> A Casa Monstro
         </label>
     </div>
     <div class="filme">
-        <img src="Noites Brutais.jpg" alt="Noites Brutais">
+        <a href="https://youtu.be/7rO80FNnyGo?si=2e5bU-F54MOovkTb" target="_blank">
+            <img src="Noites Brutais.jpg" alt="Noites Brutais">
+        </a>
         <br>
         <label>
             <input type="radio" name="opcao" value="Noites Brutais"> Noites Brutais
         </label>
     </div>
     <div class="filme">
-        <img src="velozes e furiosos 5.jpg" alt="Velozes e furiosos 5">
+        <a href="https://youtu.be/e4tEwEZYELc?si=pHWcuLSnWqiKGzrF" target="_blank">
+            <img src="velozes e furiosos 5.jpg" alt="Velozes e furiosos 5">
+        </a>
         <br>
         <label>
-            <input type="radio" name="opcao" value="Velozes e furiosos 5"> Velozes e furiosos 5
+            <input type="radio" name="opcao" value="Velozes e furiosos 5"> Velozes e Furiosos 5
         </label>
     </div>
     <div class="filme">
-        <img src="Os novatos.jpg" alt="Os novatos">
+        <a href="https://youtu.be/dkK5G1ARFrM?si=HNG2dLO1R555QIZT" target="_blank">
+            <img src="Os novatos.jpg" alt="Os novatos">
+        </a>
         <br>
         <label>
-            <input type="radio" name="opcao" value="Os novatos"> Os novatos
+            <input type="radio" name="opcao" value="Os novatos"> Os Novatos
         </label>
     </div>
     <br>
@@ -109,12 +122,11 @@
         "Os novatos": 0
     };
 
-    // No início do seu script
     document.addEventListener('DOMContentLoaded', function () {
         if (localStorage.getItem('votos')) {
             votos = JSON.parse(localStorage.getItem('votos'));
         }
-        mostrarResultado(); // Mostra resultados na carga inicial
+        mostrarResultado();
     });
 
     function contarVotos() {
@@ -123,10 +135,7 @@
 
         if (opcaoSelecionada) {
             votos[opcaoSelecionada]++;
-            
-            // Salva no localStorage
             localStorage.setItem('votos', JSON.stringify(votos));
-
             mostrarResultado();
             formulario.reset();
         } else {
